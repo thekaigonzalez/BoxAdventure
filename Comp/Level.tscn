@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/levelScript.gd" type="Script" id=1]
+
+[node name="level" type="Button"]
+margin_right = 79.0
+margin_bottom = 77.0
+text = "LEVEL1"
+script = ExtResource( 1 )
+
+[connection signal="pressed" from="." to="." method="_on_level_pressed"]

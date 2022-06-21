@@ -1,0 +1,177 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Fonts/Myriad Bold.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/menu.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/containers.gd" type="Script" id=3]
+[ext_resource path="res://Assets/background-1.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Buttons"
+length = 2.263
+tracks/0/type = "value"
+tracks/0/path = NodePath("Buttons:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.6 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ Vector2( 208.5, 621 ), Vector2( 208.5, 100 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Title:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 386.5, 100 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Buttons:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 208.5, 621 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "TitleAnim"
+length = 2.522
+tracks/0/type = "value"
+tracks/0/path = NodePath("Title:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ Vector2( 386.5, 625 ), Vector2( 386.5, 100 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Buttons:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 208.5, 621 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "buttons"
+length = 2.44
+tracks/0/type = "value"
+tracks/0/path = NodePath("Buttons:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ Vector2( 208.5, 621 ), Vector2( 208.5, 100 ) ]
+}
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -730, -215 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 522.5, 312.5 )
+scale = Vector2( 33.6562, 20.5312 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Buttons = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+anims/TitleAnim = SubResource( 3 )
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -125.5
+margin_top = -200.0
+margin_right = 125.5
+margin_bottom = -152.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "BLOCK GAME"
+
+[node name="Buttons" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -303.5
+margin_top = 321.0
+margin_right = 303.5
+margin_bottom = 759.0
+script = ExtResource( 3 )
+
+[node name="playcamp" type="Button" parent="Buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = -20.5
+margin_right = 72.0
+margin_bottom = 20.5
+text = "Campaign"
+
+[node name="dlcs" type="Button" parent="Buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = 28.9998
+margin_right = 72.0
+margin_bottom = 69.9998
+text = "Open DLCs"
+
+[node name="Credits" type="Button" parent="Buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = 81.9999
+margin_right = 72.0
+margin_bottom = 123.0
+text = "Credits"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
+anims/buttons = SubResource( 5 )
+
+[connection signal="pressed" from="Buttons/playcamp" to="Buttons" method="_on_playcamp_pressed"]
+[connection signal="pressed" from="Buttons/dlcs" to="." method="_on_dlcs_pressed"]
+[connection signal="pressed" from="Buttons/Credits" to="." method="_on_Credits_pressed"]
