@@ -111,4 +111,6 @@ func ShowDial():
 	#print($Camera2D/RESET)
 	
 func Win():
-	print("Player log: Winned Level")
+	print("Player log: won Level")
+	
+	get_tree().change_scene("res://ui/Main.tscn")
